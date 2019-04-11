@@ -1,0 +1,98 @@
+﻿@model WebApplication2.Models.Transaccion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdminSite.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaccion</h4>
+
+    <div id="mensaje" class="alert alert-success" role="alert" style="display: none" ;>
+        <strong>Sincronizacion Satisfactoria!</strong> Se han sincronizado los registros de forma satisfactoria con el sistema de Contabilidad.
+    </div>
+
+    <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none" ;>
+        <strong>Sincronizacion Fallida!</strong> Ha ocurrido un error al sincronizar los registros con el sistema de Contabilidad.
+    </div>
+
+    <br />
+
+
+    <input type="button" id="btnSincronizar" class="btn btn-warning btn-sm" title="Sincronizar (Contabilidad)" value="Sincronizar (Contabilidad)" onclick="h();"/>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.HiddenFor(model => model.Id, new { @id = "Id" })
+            @Html.DisplayNameFor(model => model.Cliente.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDocumento.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocumento.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AsientoContable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AsientoContable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRealizada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRealizada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraRealizada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraRealizada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

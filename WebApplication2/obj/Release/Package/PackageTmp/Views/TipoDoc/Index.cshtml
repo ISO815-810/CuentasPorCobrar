@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApplication2.Models.TipoDocumento>
+
+@{
+    ViewBag.Title = "Tipo Documento";
+    Layout = "~/Views/Shared/_LayoutAdminSite.cshtml";
+}
+
+<h2>Tipo de Documento</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search for Tipo Documento..">
+
+<p>
+    @Html.ActionLink("Insertar nuevo documento", "Create")
+</p>
+
+<table id="myTable" class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Cuenta Contable")
+        </th>
+        <th>
+            @Html.DisplayName("Estado")
+        </th>
+        <th>
+            @Html.DisplayName("Descripcion")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuentaContable.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
